@@ -7,10 +7,10 @@ import TuitDao from "./daos/TuitDao";
 import bodyParser from "body-parser";
 
 // connect to the database
-const DB_USERNAME = process.env.DB_USERNAME;
-const DB_PASSWORD = process.env.DB_PASSWORD;
-const connectionString = `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@cluster0.m8jeh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
-mongoose.connect(connectionString);
+
+const connectionString = `mongodb+srv://admin:'+ process.env.DB_PASSWORD +'@cluster0.m8jeh.mongodb.net/tuiter?retryWrites=true&w=majority`;
+//mongoose.connect(connectionString);
+mongoose.connect('mongodb+srv://chenkx98:<password>@cluster0.zy7qk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority');
 
 // create RESTful Web service API
 const app = express();
