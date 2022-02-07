@@ -1,12 +1,10 @@
-/**
- * @file Server file
- */
 import express, {Request, Response} from 'express';
 import UserController from "./controllers/UserController";
 import mongoose from "mongoose";
 import TuitController from "./controllers/TuitController";
 import UserDao from "./daos/UserDao";
 import TuitDao from "./daos/TuitDao";
+import bodyParser from "body-parser";
 
 // connect to the database
 const DB_USERNAME = process.env.DB_USERNAME;
@@ -16,7 +14,7 @@ mongoose.connect(connectionString);
 
 // create RESTful Web service API
 const app = express();
-app.use(express.json());
+app.use(bodyParser.json());
 
 app.get('/', (req: Request, res: Response) =>
     res.send('Welcome!'));
