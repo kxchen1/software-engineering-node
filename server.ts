@@ -10,7 +10,7 @@ import bodyParser from "body-parser";
 
 const connectionString = `mongodb+srv://admin:'+ process.env.DB_PASSWORD +'@cluster0.m8jeh.mongodb.net/tuiter?retryWrites=true&w=majority`;
 //mongoose.connect(connectionString);
-mongoose.connect('mongodb+srv://chenkx98:<password>@cluster0.zy7qk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority');
+mongoose.connect('mongodb+srv://chenkx98:GoodLuck2021!!!@cluster0.zy7qk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority');
 
 // create RESTful Web service API
 const app = express();
