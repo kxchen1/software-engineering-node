@@ -1,8 +1,8 @@
 import User from "../models/User";
 import UserModel from "../mongoose/UserModel";
-import UserDaoI from "../interfaces/UserDao";
+import UserDaoI from "../interfaces/UserDaoI";
 
-export default class UserDao implements UserDaoI {
+export default class UserDao implements UserDao {
     async findAllUsers(): Promise<User[]> {
         return await UserModel.find();
     }

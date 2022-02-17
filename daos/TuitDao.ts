@@ -1,8 +1,8 @@
 import TuitModel from "../mongoose/TuitModel";
 import Tuit from "../models/Tuit";
-import TuitDaoI from "../interfaces/TuitDao";
+import TuitDaoI from "../interfaces/TuitDaoI";
 
-export default class TuitDao implements TuitDaoI{
+export default class TuitDao implements TuitDao{
     async findAllTuits(): Promise<Tuit[]> {
         return await TuitModel.find();
     }
