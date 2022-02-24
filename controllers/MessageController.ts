@@ -38,6 +38,8 @@ export default class MessageController implements MessageControllerI {
             app.delete("/api/users/:uid/messages/:uid", MessageController.messageController.userDeleteMessage);
             app.get("/api/messages/users/:uid", MessageController.messageController.userViewsMessageTheyGet);
             app.get("/api/users/:uid/messages", MessageController.messageController.userViewsMessageTheySent);
+            app.put("/api/users/:uid/messages/:uid", MessageController.messageController.userEditMessage);
+            app.delete("/api/users/:uid/messages", MessageController.messageController.userDeleteAllMessages);
         }
         return MessageController.messageController;
     }
@@ -86,4 +88,24 @@ export default class MessageController implements MessageControllerI {
     userSendMessage = (req: Request, res: Response) =>
         MessageController.messageDao.userSendMessage(req.params.uid, req.params.uid)
             .then(messages => res.json(messages));
+
+    /**
+     * @param {Request} req Represents request from client, including the
+     * path parameters uid and uid representing the messages between two users are edited
+     * @param {Response} res Represents response to client, including status
+     * on whether updating the message was successful or not
+     */
+    userEditMessage = (req: Request, res: Response) =>
+        MessageController.messageDao.userEditMessage(req.params.uid, req.params.uid)
+            .then(status => res.send(status));
+
+    /**
+     * @param {Request} req Represents request from client, including the
+     * path parameters uid representing the messages sent by this user are removed
+     * @param {Response} res Represents response to client, including status
+     * on whether updating the message was successful or not
+     */
+    userDeleteAllMessages = (req: Request, res: Response) =>
+        MessageController.messageDao.userDeleteAllMessages(req.params.uid)
+            .then(status => res.send(status));
 }

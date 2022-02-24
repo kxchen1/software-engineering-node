@@ -5,4 +5,6 @@ export default interface MessageControllerI {
     userViewsMessageTheySent (req: Request, res: Response): void;
     userViewsMessageTheyGet (req: Request, res: Response): void;
     userDeleteMessage (req: Request, res: Response): void;
+    userEditMessage (req:Request, res:Response): void;
+    userDeleteAllMessages (req: Request, res: Response):void;
 };
