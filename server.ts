@@ -12,19 +12,12 @@ import MessageController from "./controllers/MessageController";
 
 // connect to the database
 
-const connectionString = `mongodb+srv://admin:'+ process.env.DB_PASSWORD +'@cluster0.m8jeh.mongodb.net/tuiter?retryWrites=true&w=majority`;
-//mongoose.connect(connectionString);
-mongoose.connect('mongodb+srv://chenkx98:GoodLuck2021!!!@cluster0.zy7qk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority');
+mongoose.connect('mongodb+srv://user1:secretpassword@cluster0.xoijd.mongodb.net/tuiter-a2?retryWrites=true&w=majority');
 
 // create RESTful Web service API
 const app = express();
 app.use(bodyParser.json());
 
-app.get('/', (req: Request, res: Response) =>
-    res.send('Welcome!'));
-
-app.get('/add/:a/:b', (req: Request, res: Response) =>
-    res.send(req.params.a + req.params.b));
 
 
 const userController = UserController.getInstance(app);
