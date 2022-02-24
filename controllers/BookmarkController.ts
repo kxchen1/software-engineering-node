@@ -76,4 +76,28 @@ export default class BookmarkController implements BookmarkControllerI {
         BookmarkController.bookmarkDao.findAllTuitsBookmarked(req.params.uid)
             .then(bookmarks => res.json(bookmarks));
 
+    /**
+     * Updates one bookmarks that user created from the database
+     * @param {Request} req Represents request from client, including the path
+     * parameter uid representing the user who bookmarks tuits
+     * parameter tid representing the tuit that is bookmarked by the user
+     * @param {Response} res Represents response to client, including the
+     * change of the status after updating
+     */
+    userEditBookmark = (req: Request, res: Response) =>
+        BookmarkController.bookmarkDao.userEditBookmark(req.params.uid, req.params.tid)
+            .then(status => res.send(status));
+
+
+    /**
+     * @param {Request} req Represents request from client, including the
+     * path parameters uid representing the user that is unbookmarking
+     * the tuits
+     * @param {Response} res Represents response to client, including status
+     * on whether deleting the bookmarks was successful or not
+     */
+    userUnbookmarkAllTuits = (req: Request, res: Response) =>
+        BookmarkController.bookmarkDao.userUnbookmarkAllTuits(req.params.uid)
+            .then(status => res.send(status));
+
 }

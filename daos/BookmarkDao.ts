@@ -53,4 +53,22 @@ export default class BookmarkDao implements BookmarkDaoI {
      */
     userBookmarksTuit = async (uid: string, tid: string): Promise<any> =>
         BookmarkModel.create({bookmarkedBy: uid, bookmarkedTuit: tid});
+
+    /**
+     * Updates bookmarks instance from the database
+     * @param {string} uid the user who bookmarks
+     * @param {string} tid the tuit gets bookmarked
+     * @returns Promise To be notified when bookmark instance is updated from the database
+     */
+    userEditBookmark = async (uid: string, tid: string): Promise<any> =>
+        BookmarkModel.updateOne({bookmarkedBy: uid, bookmarkedTuit: tid});
+
+
+    /**
+     * deletes all bookmarks instances related to one user from the database
+     * @param {string} uid the user who bookmarks
+     * @returns Promise To be notified when bookmark instances are deleted from the database
+     */
+    userUnbookmarkAllTuits = async (uid: string): Promise<any> =>
+        BookmarkModel.deleteMany({bookmarkedBy: uid});
 }

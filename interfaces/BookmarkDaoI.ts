@@ -8,4 +8,6 @@ export default interface BookmarkDaoI {
     findAllTuitsBookmarked (uid: string): Promise<Bookmark[]>;
     userUnbookmarksTuit (tid: string, uid: string): Promise<any>;
     userBookmarksTuit (tid: string, uid: string): Promise<Bookmark>;
+    userEditBookmark (tid: string, uid: string): Promise<Bookmark>;
+    userUnbookmarkAllTuits (uid: string): Promise<any>;
 };
