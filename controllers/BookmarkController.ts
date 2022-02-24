@@ -36,6 +36,8 @@ export default class BookmarkController implements BookmarkControllerI {
             app.post("/api/users/:uid/bookmarks/:tid", BookmarkController.bookmarkController.userBookmarksTuit);
             app.delete("/api/users/:uid/bookmarks/:tid", BookmarkController.bookmarkController.userUnbookmarksTuit);
             app.get("/api/users/:uid/bookmarks", BookmarkController.bookmarkController.findAllTuitsBookmarked);
+            app.put("/api/user/:uid/bookmarks/:tid", BookmarkController.bookmarkController.userEditBookmark);
+            app.delete("/api/users/:uid/bookmarks", BookmarkController.bookmarkController.userUnbookmarkAllTuits);
         }
         return BookmarkController.bookmarkController;
     }
