@@ -60,4 +60,22 @@ export default class FollowDao implements FollowDaoI {
      */
     userUnfollowsUser = async (uida: string, uidb: string): Promise<any> =>
         FollowModel.deleteOne({userFollowed: uida, userFollowing: uidb});
+
+    /**
+     * Update follow Instance from database
+     * @param {string} uida the PK of the user who is followed
+     * @param {string} uidb the PK of the user who follows
+     * @returns Promise To be notified when the follow instance is updated from database
+     */
+    userUpdateFollowRelation = async(uida: string, uidb: string): Promise<any> =>
+        FollowModel.updateOne({userFollowed: uida, userFollowing: uidb});
+
+
+    /**
+     * Remove all follow Instance related to one user from database
+     * @param {string} uid the PK of the user who is followed
+     * @returns Promise To be notified when the follow instances are removed from database
+     */
+    userUnfollowAllUsers = async(uid: string): Promise<any> =>
+        FollowModel.deleteMany({userFollowed: uid});
 }

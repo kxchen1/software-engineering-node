@@ -4,6 +4,7 @@
 import {Express, Request, Response} from "express";
 import FollowControllerI from "../interfaces/FollowControllerI";
 import FollowDao from "../daos/FollowDao";
+import Follow from "../models/Follow";
 /**
  * @class FollowController Implements RESTful Web service API for follows resource.
  * Defines the following HTTP endpoints:
@@ -38,6 +39,8 @@ export default class FollowController implements FollowControllerI {
             app.delete("/api/users/:uid/follows/:uid", FollowController.followController.userUnfollowsUser);
             app.get("/api/follows/users/:uid", FollowController.followController.findAllUsersThatAreFollowed);
             app.get("/api/users/:uid/follows", FollowController.followController.findAllUsersThatFollowThisUser);
+            app.put("/api/users/:uid/follows/:uid", FollowController.followController.userUpdateFollowRelation);
+            app.delete("/api/users/:uid/follows", FollowController.followController.userUnfollowAllUsers)
         }
         return FollowController.followController;
     }
@@ -87,5 +90,27 @@ export default class FollowController implements FollowControllerI {
      */
     userFollowsUser = (req: Request, res: Response) =>
         FollowController.followDao.userFollowsUser(req.params.uid, req.params.uid)
+            .then(follows => res.json(follows));
+
+    /**
+     * @param {Request} req Represents request from client, including the
+     * path parameters uid representing the user that is unfollowing
+     * the other users
+     * @param {Response} res Represents response to client, including status
+     * on whether deleting the follow was successful or not
+     */
+    userUnfollowAllUsers = (req: Request, res: Response) =>
+        FollowController.followDao.userUnfollowAllUsers(req.params.uid)
+            .then(status => res.json(status));
+
+    /**
+     * @param {Request} req Represents request from client, including the
+     * path parameters uid and uid representing the two users involved in the
+     * following relation
+     * @param {Response} res Represents response to client, including the follow
+     * json after the update
+     */
+    userUpdateFollowRelation = (req: Request, res: Response) =>
+        FollowController.followDao.userUpdateFollowRelation(req.params.uid, req.params.uid)
             .then(follows => res.json(follows));
 }
