@@ -1,4 +1,20 @@
 import mongoose from "mongoose";
+
+/**
+ * @property {string} username The name of the user
+ * @property {string} password The password of the user
+ * @property {string} firstName The first name of the user
+ * @property {string} lastName The last name of the user
+ * @property {string} email The email of the user
+ * @property {string} profilePhoto The profile photo of the user
+ * @property {string} headerImage the user's headerImage
+ * @property {string} accountType The type of the account
+ * @property {string} maritalStatus The status of marriage
+ * @property {string} biography The user's summary
+ * @property {date} dateOfBirth The user's birthday
+ * @property {date} joined The date the user joined Tuiter
+ * @property {location} the location of the user
+ */
 const UserSchema = new mongoose.Schema({
     username: {type: String, required: true},
     password: {type: String, required: true},
