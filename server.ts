@@ -31,7 +31,7 @@ const DB_NAME = "myFirstDatabase";
 const DB_QUERY = "retryWrites=true&w=majority";
 // const connectionString = `${PROTOCOL}://${DB_USERNAME}:${DB_PASSWORD}@${HOST}/${DB_NAME}?${DB_QUERY}`;// connect to the database
 const connectionString = `${PROTOCOL}://${DB_USERNAME}:${DB_PASSWORD}@${HOST}/${DB_NAME}?${DB_QUERY}`;// connect to the database
-mongoose.connect(connectionString);
+mongoose.connect('mongodb+srv://kxc:kxc@cluster0.4gbgm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority');
 
 const app = express();
 app.use(cors({

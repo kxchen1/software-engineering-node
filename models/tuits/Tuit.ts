@@ -1,13 +1,11 @@
 import User from "../users/User";
+import mongoose from "mongoose";
 import Stats from "./Stats";
 
 export default interface Tuit {
-    tuit: string,
-    postedBy: User,
-    postedOn?: Date,
-    image?: String,
-    youtube?: String,
-    avatarLogo?: String,
-    imageOverlay?: String,
-    stats: Stats
-};
+    _id?: mongoose.Schema.Types.ObjectId;
+    tuit: string;
+    postedBy?: User;
+    postedOn: Date;
+    stats: Stats;
+}
