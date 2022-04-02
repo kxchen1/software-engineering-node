@@ -1,7 +1,7 @@
 // @ts-ignore
 import axios, { AxiosResponse } from 'axios';
 import User from "../models/users/User";
-axios.defaults.baseURL = 'http://https://dislikebuttons.herokuapp.com';
+axios.defaults.baseURL = 'https://dislikebuttons.herokuapp.com/api';
 //axios.defaults.baseURL = 'https://cs5500-01-sp22.herokuapp.com/api';
 
 const findAllUsers = async () =>
